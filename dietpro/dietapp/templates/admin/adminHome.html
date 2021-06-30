@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+{% load static %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Admin home</title>
+	<link rel="stylesheet" href="{% static 'css/my1.css' %}" type="text/css">
+</head>
+<body>
+	<div id="header" >
+		<a href="index.html" class="logo"><img src="{% static 'images/logo3.jpg' %}"  alt=""></a>
+		<ul><font color="red">
+			<li>
+				<a href="/adHome/"><font color="red" size="3"><b>Home</b></font></a>
+			</li>
+
+			<li>
+				<a href="/viewDoctorlist/"><font color="red" size="3"><b>Doctors</b></font></a>
+			</li>
+
+			<li>
+				<a href="/viewUserlist/"><font color="red" size="3"><b>Users</b></font></a>
+			</li>
+
+			<li class="selected">
+				<a href="/adViewFood/"><font color="red" size="3"><b>View Food Items</b></font></a>
+			</li>
+			<li>
+				<a href="/logout/"><font color="red" size="3"><b>logout</b></font></a>
+			</li></font>
+		</ul>
+
+	</div>
+	<div id="body">
+		<div class="content">
+			<img src="{% static 'images/3.jpg' %}" width="900"   alt="">
+			<center>
+                <h2>Welcome {{uname}}</h2>
+
+
+
+
+				</center>
+		</div>
+
+	</div>
+	<div id="footer">
+		<div>
+			<p>
+				<span>2023 &copy; Illumelabs Diagnostic Center.</span><a href="#" >Terms of Service</a> | <a href="#" >Privacy Policy</a>
+			</p>
+			<ul>
+				<li id="facebook">
+					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+				</li>
+				<li id="twitter">
+					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+				</li>
+				<li id="googleplus">
+					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+				</li>
+				<li id="rss">
+					<a href="#" >rss</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

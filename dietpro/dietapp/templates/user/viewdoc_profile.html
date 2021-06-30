@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+{% load static %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>User registration</title>
+	<link rel="stylesheet" href="{% static 'css/my1.css' %}" type="text/css">
+</head>
+<body>
+	<div id="header">
+		<a href="index.html" class="logo"><img src="{% static 'images/logo3.jpg' %}"  alt=""></a>
+		<ul>
+			<li>
+				<a href="/userHome/">Home</a>
+			</li>
+			<li class="selected">
+				<a href="/uProfileView/">about</a>
+			</li>
+
+			{% if med %}
+			<li>
+				<a href="/viewMedHistory/">Medical History</a>
+			</li>
+			{% else %}
+			<li>
+				<a href="/medhistory/">Add Medical History</a>
+			</li>
+
+			{% endif %}
+
+
+			<li>
+				<a href="/myappointment_details/">Appointments</a>
+			</li>
+			<li>
+				<a href="/logout/">Logout</a>
+			</li>
+		</ul>
+	</div>
+	<div id="body">
+		<div class="content">
+			<img src="{% static 'images/about.jpg' %}" width="900"   alt="">
+			<center>
+                <h2>Doctor Profile</h2>
+				<br>
+				<img src="{{x.}}" >
+
+                <table class="tbl">
+				<tr>
+					<td><span>Licence Number*</span></td>
+					<td><input type="text" name="lno" id="lno" value="{{x.}}" readonly>
+				</td></tr>
+
+
+				<tr>
+					<td><span>Name*</span></td>
+					<td>
+					<input type="text" name="name" id="Name" value="{{x.}}" readonly>
+				</td></tr>
+
+				<tr>
+					<td><span>Gender*</span></td>
+					<td>
+				<input type="text" name="gender" id="gender" value="{{x.}}" readonly>
+				</td></tr>
+
+                <tr>
+					<td><span>Specialization*</span></td>
+					<td>
+					<input type="text" name="spec" value="{{x.}}" readonly>
+				</td></tr>
+
+                <tr>
+					<td><span>Year of Experience*</span></td>
+					<td>
+					<input type="number" name="exp" value="{{x.}}" readonly>
+				</td></tr>
+
+                <tr>
+					<td><span>Qualifications*</span></td>
+					<td>
+					 <input type="text" name="qual" readonly value="{{x.}}">
+				</td></tr>
+
+                <tr>
+					<td><span>Hospital Name*</span></td>
+					<td>
+					<input type="text" name="hos" value="{{x.}}" readonly>
+				</td></tr>
+
+						<tr>
+					<td><span>Address*</span></td>
+					<td>
+                    <textarea name="add" readonly value="{{x.}}">	 </textarea>
+                </td></tr>
+
+                <tr>
+					<td><span>Contact No*</span></td>
+					<td>
+					<input type="text" name="ph"  value="{{x.}}" readonly>
+				</td></tr>
+
+                <tr>
+					<td><span>Consultation days*</span></td>
+					<td>
+					<input type="text" name="cdays" readonly  value="{{x.}}">
+				</td></tr>
+
+				<tr>
+					<td><span>email*</span></td>
+					<td>
+					<input type="text" name="email" id="email" value="{{x.}}" readonly>
+				</td></tr>
+
+						<tr>
+					<td><span>Phone Number</span></td>
+					<td>
+					<input type="text" name="phone" value="{{x.}}" readonly>
+				</td></tr>
+
+				<tr><td><span>Reviews</span></td></tr>
+
+						{% for x in review %}
+				<tr><td></td><td>{{x.uid}}</td></tr>
+				<tr><td></td><td>{{x.review}}</td></tr>
+
+						{% endfor %}
+
+					<tr><td>write a review</td>
+						<td>
+							<form action="/add_userreview/" method="post">
+								<input type="number" name="uid" value="{{x.uid}}">
+								<input type="number" name="did" value="{{y.did}}">
+							<textarea name="myreview"></textarea>
+							</form>
+						</td></tr>
+
+
+			</table>
+		</center>
+		</div>
+
+
+		<div id="app">
+			<br><br><br><font size="3">Do you want to take an appointment of Doctor?</font><br>
+			<form action="/takeappointment/" method="post">
+			<input type="number" name="uid" value="" hidden><br>
+			<input type="number" name="did" value="" hidden><br><br><br>
+			<input type="submit" value="Take Appointment" >
+			</form>
+		</div>
+
+	</div>
+	<div id="footer">
+		<div>
+			<p>
+				<span>2023 &copy; Illumelabs Diagnostic Center.</span><a href="#" >Terms of Service</a> | <a href="#" >Privacy Policy</a>
+			</p>
+			<ul>
+				<li id="facebook">
+					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+				</li>
+				<li id="twitter">
+					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+				</li>
+				<li id="googleplus">
+					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+				</li>
+				<li id="rss">
+					<a href="#" >rss</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

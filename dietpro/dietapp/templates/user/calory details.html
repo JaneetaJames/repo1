@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+{% load staticfiles %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Laboratory Website Template</title>
+	<link rel="stylesheet" href="{% static 'css/my1.css' %}" type="text/css">
+</head>
+<body>
+<div id="header">
+		<a href="index.html" class="logo"><img src="{% static 'images/logo.png' %}" alt=""></a>
+		<ul>
+			<li>
+				<a href="/userHome/">Home</a>
+			</li>
+			<li class="selected">
+				<a href="/uProfileView/">Profile</a>
+			</li>
+			<li class="selected">
+				<a href="/viewUserCal/">Calorie consumptiondetails</a>
+			</li>
+
+			<li>
+				<a href="/logout/">Logout</a>
+			</li>
+		</ul>
+	</div>
+	<div id="section1" style="background-image: url('/static/images/diet.png');
+	background-size:cover;
+	border-bottom: 2px solid #ffe600;
+	height: 500px;
+
+	margin: 0 0 2px;
+	padding: 0;">
+
+		<h2><font color="yellow"> Welcome  {{udata.fname}}  {{udata.lname}}</font></h2>
+		<br><br>
+
+	</div>
+	<div id="featured">
+		<br><br><font color="white" size="4">
+		<center><h1>Calorie Calculation</h1></center><br><br><br>
+
+		<table border="" style="margin-left:200px;height:300px;" >
+
+			<tr><th>Category</th><th>Date</th><th>Food1</th><th>Food2</th><th>food3</th><th>Food4</th>
+                <th>carbohydrate</th><th>fat</th><th>protein</th><th>calorie</th></tr>
+
+            {% for s in res %}
+		<tr>
+			<td>{{s.cat}}</td>
+			<td>{{s.date}}</td>
+			<td>{{s.food1}}</td>
+			<td>{{s.food2}}</td>
+			<td>{{s.food3}}</td>
+			<td>{{s.food4}}</td>
+			<td>{{s.carbohydrate}}</td>
+			<td>{{s.fats}}</td>
+			<td>{{s.protein}}</td>
+			<td>{{s.calorie}}</td>
+		</tr>
+            {% endfor %}
+
+
+		</table>
+<div style="margin-left:300px;margin-top:20px;">
+		{% if cal %}
+		<h3>Result</h3>
+			<table>
+				<th>CarboHydrate</th><td>:{{carb}}</td></tr>
+				<tr><th>Calorie</th><td>:{{cal}}</td></tr>
+				<tr><th>Protien</th><td>:{{pro}}</td></tr>
+				<tr><th>Fat</th><td>:{{fat}}</td></tr>
+			</table>
+		{% endif %}
+</div>
+
+
+		</font>
+		<br><br><br>
+
+	</div>
+	<div id="footer">
+		<div>
+			<p>
+				<span>2023 &copy; Illumelabs Diagnostic Center.</span><a href="#" >Terms of Service</a> | <a href="#" >Privacy Policy</a>
+			</p>
+			<ul>
+				<li id="facebook">
+					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+				</li>
+				<li id="twitter">
+					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+				</li>
+				<li id="googleplus">
+					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+				</li>
+				<li id="rss">
+					<a href="#" >rss</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

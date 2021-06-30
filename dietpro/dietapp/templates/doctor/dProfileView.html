@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>About - Laboratory Website Template</title>
+	<link rel="stylesheet" href="{% static 'css/my1.css' %}" type="text/css">
+</head>
+<body>
+	<div id="header">
+		<a href="index.html" class="logo"><img src="{% static 'images/logo.png' %}" alt=""></a>
+		<ul>
+			<li>
+				<a href="/docHome/">home</a>
+			</li>
+			<li>
+				<a href="/doc_viewprofile/">about</a>
+			</li>
+			{% if status != "pending" %}
+			<li>
+				<a href="/manage_appoint/">Manage Appointments</a>
+			</li>
+			{% endif %}
+
+
+			<li class="selected">
+				<a href="contact.html">contact</a>
+			</li>
+			<li>
+				<a href="/logout/">logout</a>
+			</li>
+		</ul>
+
+	</div>
+	<div id="body">
+
+
+		
+		<div id="pic" style="background:#daf2f7;width:190px;height:190px;margin-left:20px;padding-left:20px;">
+			<br><br>
+			{% if x %}
+		<form method="post" enctype="multipart/form-data" action="/im/">
+			{% csrf_token %}
+			{{ form.as_table}}
+			<input type="submit">
+		</form>
+			{% else %}
+			
+			<img src="{{doc.dp.url}}" width="180" height="120">
+			<center><h3>Dr.{{doc.fname}}&nbsp&nbsp{{doc.lname}}</h3></center>
+			{% endif %}
+		</div>
+
+		<div class="sidebar">
+
+			<table>
+				<tr><td>Doctor ID<br><br><br></td><td>{{doc.did}}<br><br><br></td></tr>
+
+				<tr><td><font color="white">Personal&nbspDetails</font> </td></tr>
+
+				<tr><td>First name<br><br><br></td><td>{{doc.fname}}<br><br><br></td></tr>
+				<tr><td>Last name<br><br><br></td><td>{{doc.lname}}<br><br><br></td></tr>
+				<tr><td>Gender<br><br><br></td><td>{{doc.gender}}<br><br><br></td></tr>
+				<tr><td>Date of Birth<br><br><br></td><td>{{doc.dob}}<br><br><br></td></tr>
+
+				<tr><td>Telephone<br><br><br></td><td>{{doc.ph}}<br><br><br></td></tr>
+				<tr><td>Email<br><br><br></td><td>{{doc.email}}<br><br><br></td></tr>
+
+				<tr><td><font color="white"> LOGIN&nbspDetails</font></td></tr>
+
+				<tr><th>User Name<br><br><br></th><td>{{doc.uname}}<br><br><br></td></tr>
+
+				<tr><td><font color="white">WORK&nbspDetails</font></td></tr>
+
+				<tr><th>Qualifications<br><br><br></th><td>{{doc.qual}}<br><br><br></td></tr>
+				<tr><th>Specialization<br><br><br></th><td>{{doc.spec}}<br><br><br></td></tr>
+				<tr><th>Licence No<br><br><br></th><td>{{doc.lno}}<br><br><br></td></tr>
+				<tr><th>Practice starting Date<br><br><br></th><td>{{doc.exp}}<br><br><br></td></tr>
+					{{doc.country}}<br><br><br></td></tr>
+
+				<tr><th>Certificate<br><br><br></th><td><a href="{{doc.file}}">link</a><br><br><br></td></tr>
+			</table>
+
+		</div>
+
+		<div class="content">
+			<div id="profile" style="width:900px;height:900px;margin-left:280px;margin-top:-800px;padding-left:40px;" >
+
+			<h1>PROFILE</h1><br><br><br><br><br><br>
+				<h2>Update profile</h2>
+				CONTACT DETAILS<br><br>
+				Update Email<br>
+					<form action="/mailUpdate/" method="post" >{% csrf_token %}
+					<input type="email" name="email"  placeholder="New mail id" required>
+					<input type="submit"  value="UPDATE" ><br><br>
+					</form>
+				Phone Number<br>
+					<form action="/phoneUpdate/" method="post" >{% csrf_token %}
+					<input type="text" name="ph" placeholder="New Phone Number" required>
+					<input type="submit"  value="UPDATE"><br><br>
+					</form>
+				---------------------------------------------------------------------------------
+
+                <br><br>
+                EDUCATIONAL DETAILS<br><br>
+				<form action="/qualUpdate/" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                Qualifications<br>
+				<input type="text" name="qual" placeholder="qualification" required >
+				Certificate<br>
+					<input type="file" name="cert">
+					<input type="submit" VALUE="UPDATE"><br><br>
+
+				</form>
+				---------------------------------------------------------------------------------
+                <br><br>
+
+				---------------------------------------------------------------------------
+
+                <br> <br>
+                CHANGE PASSWORD<br><br>
+				<form action="/dPwdUpdate/" method="post" >{% csrf_token %}
+ 				Current Password<br>
+					<input type="text" name="pwd1" required><br>
+                New Password<br>
+					<input type="text" name="pwd2" max required><br>
+				    <input type="submit"  name="pwd" value="UPDATE" >
+				</form>
+
+
+		</div>
+	</div>
+	<div id="footer">
+		<div>
+			<p>
+				<span>2023 &copy; Illumelabs Diagnostic Center.</span><a href="#" >Terms of Service</a> | <a href="#" >Privacy Policy</a>
+			</p>
+			<ul>
+				<li id="facebook">
+					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+				</li>
+				<li id="twitter">
+					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+				</li>
+				<li id="googleplus">
+					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+				</li>
+				<li id="rss">
+					<a href="#" >rss</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	</div></div></body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+{% load static %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Admin home</title>
+	<link rel="stylesheet" href="{% static 'css/my1.css' %}" type="text/css">
+</head>
+<body>
+	<div id="header" >
+		<a href="index.html" class="logo"><img src="{% static 'images/logo3.jpg' %}"  alt=""></a>
+		<ul><font color="red">
+			<li>
+				<a href="/adHome/"><font color="red" size="3"><b>Home</b></font></a>
+			</li>
+			<li>
+				<a href="/viewUserlist/"><font color="red" size="3"><b>Users</b></font></a>
+			</li>
+			<li>
+				<a href="/viewDoctorlist/"><font color="red" size="3"><b>Doctors</b></font></a>
+			</li>
+			<li>
+				<a href="/ad_viewNewdoctor/"><font color="red" size="3"><b>New Doctors</b></font></a>
+			</li>
+
+			<li>
+				<a href="/viewBlockedDoctors/"><font color="red" size="3"><b>View Blocked Doctors</b></font></a>
+			</li>
+
+
+			<li>
+				<a href="/logout/"><font color="red" size="3"><b>logout</b></font></a>
+			</li></font>
+		</ul>
+
+	</div>
+
+
+			<img src="{% static 'images/about.jpg' %}" width="1440" height="500"   alt="">
+			<center>
+				{% if status == "new" %}
+                <h2>New Doctor Registrations</h2>
+				{% elif status == "active"  %}
+				<h2>Active Doctor's Profile</h2>
+				{% else %}
+				<h2>Blocked Doctor's Profile</h2>
+				{% endif %}
+
+                <table border="" bgcolor="lightgreen"><tr><th>Doctor Id</th><th>Name</th><th>Gender</th><th>DOB</th>
+					<th>Email</th><th>Phone Number</th>
+                        <th>Qualifications</th><th>Specialization</th><th>Experience</th><th>Licence No</th>
+                    <th>User Name</th><th>Password</th><th>certificate</th><th>Status</th><th>Manage</th>
+                </tr>
+                {% for x in doc %}
+                    <tr><td>{{x.did}}</td><td>{{x.fname}}{{x.lname}}</td><td>{{x.gender}}</td>
+                    <td>{{x.dob}}</td><td>{{x.email}}</td><td>{{x.ph}}</td><td>{{x.qual}}</td>
+                    <td>{{x.spec}}</td><td>{{x.exp}}</td><td>{{x.lno}}</td>
+
+					<td>{{x.uname}}</td><td>{{x.pwd}}</td><td><a href="{{x.file}}">click</a></td>
+                    <td>{{x.status}}</td>
+						<td>
+							 <form action="/docManage/" method="post">{% csrf_token %}
+                                <input type="number" name="did" value="{{x.did}}" hidden>
+                                {% if x.status == "pending"  or x.status == "deactivated" %}
+                                <input type="submit" name="approve" value="Approve" onclick="<script>alert(approved);</script>">
+                                <input type="submit" name="reject" value="Reject">
+                                {% elif x.status == "rejected" %}
+                                <input type="submit" name="approve" value="Approve" onclick="<script>alert(approved);</script>">
+                                {% else %}
+                                <input type="submit" name="deactivate" value="Deactivate">
+                                {% endif %}
+							 </form></td>
+                 {% endfor%}
+
+                </table>
+
+
+				</center>
+
+
+	<br><br><br>
+	<div id="footer">
+		<div>
+			<p>
+				<span>2023 &copy; Illumelabs Diagnostic Center.</span><a href="#" >Terms of Service</a> | <a href="#" >Privacy Policy</a>
+			</p>
+			<ul>
+				<li id="facebook">
+					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+				</li>
+				<li id="twitter">
+					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+				</li>
+				<li id="googleplus">
+					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+				</li>
+				<li id="rss">
+					<a href="#" >rss</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
